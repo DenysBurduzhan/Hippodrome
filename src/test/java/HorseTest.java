@@ -62,7 +62,7 @@ public class HorseTest {
     }
 
     @Test
-    public void testMoveCallsGetRandomDoubleWithCorrectParameters() {
+    public void testRandomDouble() {
         try (MockedStatic<Horse> mockedStatic = mockStatic(Horse.class)) {
             Horse horse = new Horse("Test", 10, 100);
             mockedStatic.when(() -> Horse.getRandomDouble(0.2, 0.9)).thenReturn(0.5);
@@ -72,7 +72,7 @@ public class HorseTest {
     }
     @ParameterizedTest
     @ValueSource(doubles = {0.3, 0.5, 0.9})
-    public void testMoveCalculatesDistanceCorrectly(double mockRandom) {
+    public void testMove(double mockRandom) {
         try (MockedStatic<Horse> mockedStatic = mockStatic(Horse.class)) {
             mockedStatic.when(() -> Horse.getRandomDouble(0.2, 0.9)).thenReturn(mockRandom);
             Horse horse = new Horse("Test", 10, 100);
